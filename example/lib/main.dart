@@ -41,32 +41,35 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: Center(
-        child: FutureBuilder<String?>(
-          future: getDeviceId(false),
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done &&
-                snapshot.data != null) {
-              return Text(
-                snapshot.data ?? '',
-              );
-            }
+        child: Column(
+          children: [
+            FutureBuilder<String?>(
+              future: getDeviceId(false),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done &&
+                    snapshot.data != null) {
+                  return Text(
+                    'Non-Storage: ${snapshot.data}',
+                  );
+                }
 
-            return const CircularProgressIndicator.adaptive();
-          },
-        ),
-      ),
-    );
-  }
+                return const CircularProgressIndicator.adaptive();
+              },
+            ),
+            FutureBuilder<String?>(
+              future: getDeviceId(true),
+              builder: (context, snapshot) {
+                if (snapshot.connectionState == ConnectionState.done &&
+                    snapshot.data != null) {
+                  return Text(
+                    'Storage: ${snapshot.data}',
+                  );
+                }
 
-  void showPopup(String? message) {
-    showDialog(
-      context: context,
-      builder: (context) => Dialog(
-        child: Padding(
-          padding: const EdgeInsets.all(24),
-          child: Text(
-            message ?? 'Error',
-          ),
+                return const CircularProgressIndicator.adaptive();
+              },
+            )
+          ],
         ),
       ),
     );
