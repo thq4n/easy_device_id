@@ -1,6 +1,6 @@
 name: easy_device_id
 description: Easy device id package that supports storing device-id into the keychain for android and iOS.
-version: 1.0.0
+version: 1.0.1
 homepage:
 
 environment:
@@ -11,7 +11,7 @@ dependencies:
   flutter:
     sdk: flutter
 
-  flutter_keychain: ^2.2.1
+  flutter_keychain: ^2.4.0
   package_info_plus: ^4.1.0
   platform_device_id: ^1.0.1
 
