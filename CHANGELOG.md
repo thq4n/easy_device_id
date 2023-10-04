@@ -1,3 +1,7 @@
+## 1.1.0
+
+*  Prevent Platform Exception when using keychain
+
 ## 1.0.1
 
 *  Upgrade keychain version to 2.4.0

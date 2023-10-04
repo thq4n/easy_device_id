@@ -1,6 +1,7 @@
 library easy_device_id;
 
 import 'dart:async';
+import 'dart:developer';
 
 import 'package:package_info_plus/package_info_plus.dart';
 import 'package:platform_device_id/platform_device_id.dart';
@@ -16,7 +17,10 @@ Future<String?> getDeviceId([bool enableKeyChainStorage = true]) async {
   final storageDeviceId = await KeyChainUtil.getStorageDeviceId(
     packageName: packageName,
     enableKeyChainStorage: enableKeyChainStorage,
-  );
+  ).catchError((error) {
+    log(error.toString());
+    return null;
+  });
 
   if (storageDeviceId != null) {
     return storageDeviceId;

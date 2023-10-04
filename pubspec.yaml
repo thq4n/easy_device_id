@@ -1,6 +1,6 @@
 name: easy_device_id
 description: Easy device id package that supports storing device-id into the keychain for android and iOS.
-version: 1.0.1
+version: 1.1.0
 homepage:
 
 environment:
